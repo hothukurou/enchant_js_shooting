@@ -100,11 +100,11 @@ window.onload = function () {
                         const distance = Math.sqrt((bombCenter.x - monsterCenter.x) ** 2 + (bombCenter.y - monsterCenter.y) ** 2); // 二点の距離を三平方の定理から求めている
                         if (distance < hitDistance) {
                             // 当たり判定  二点の距離が二円の半径の和より短ければその円は衝突している
-                            const S_Effect = new Sprite(16, 16); //爆発エフェクト
-                            S_Effect.moveTo(monster.x, monster.y); //スライム画像と同じ位置に爆発エフェクトを設置
-                            mainScene.addChild(S_Effect); //mainSceneシーンに表示
-                            S_Effect.image = game.assets[imgUrls[6]]; //爆発画像
-                            S_Effect.onenterframe = function () {
+                            const effect = new Sprite(16, 16); //爆発エフェクト
+                            effect.moveTo(monster.x, monster.y); //スライム画像と同じ位置に爆発エフェクトを設置
+                            mainScene.addChild(effect); //mainSceneシーンに表示
+                            effect.image = game.assets[imgUrls[6]]; //爆発画像
+                            effect.onenterframe = function () {
                                 // 爆発は毎フレームで画像を切り替えるの絵処理している
                                 if (this.frame >= 5) this.parentNode.removeChild(this);
                                 // 最後フレームまで表示したら画面から消滅する
